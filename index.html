@@ -13,7 +13,7 @@
     <!style for tables>
     <style>
       table {
-        front-family: arial, sans-serif;
+        font-family: arial, sans-serif;
         border-collapse: collapse;
         width: 30%;
 
@@ -73,7 +73,7 @@
 
     <p class="ex1">
       <pre>
-        sooo this is about this and that and some of this too...
+        asbtract here
       </pre>
 </p>
 
@@ -83,7 +83,7 @@
   
   <p class="ex1">
     <pre>
-      intro definitely goes here 
+      intro here 
     </pre>
 
 
@@ -94,28 +94,13 @@
 
 
 <head>
-  <title>Change Button Colour</title>
+  <title>My Daily Activities</title>
+  <script type="text/javascript" src=https://www.gstatic.com/charts/loader.js></script>
 </head>
-<body>
-  <button id="colorButton">Click me to change colour</button>
 
-  <script>
-    //Get a reference to the button element
-    var button = document.getElementbyId("colorButton");
-
-    //Function to change the button colour
-    function changeColor(){
-      //Generate a random colour (hexadecimal)
-      var randomColor = "#" + Math.floor(Math.random()*16777215).toString(16);
-
-      //Set the button's background color to the random color
-      button.style.backgroundColor = randomColor;
-      ]
-
-      //Add a click event listener to the button
-      button.addEventListener("click",changeColor);
-      </script>
-</body>
+  <body>
+    <div id="chart_div"></div>
+  </body>
 
 
 
