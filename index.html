@@ -98,7 +98,7 @@
 
 <body>
   <div id="last-updated">Loading last update time....</div>
-  <button onclick="verifyLastUpdatedTime()" style="display: block; margin: 10px auto; padding 8px 16px;">
+  <button onclick="getLastUpdatedTime()" style="display: block; margin: 10px auto; padding: 8px 16px;">
     Verify Last Modified Time
   </button>
 
@@ -107,17 +107,17 @@
       const username = 'FEPSFY7007312';
       const repo = 'FY7007312';
 
-      const url = 'https://api.github.com/repos/$(username)/$(repo)/commits';
+      const url = `https://api.github.com/repos/${username}/${repo}/commits`;
 
       try {
         const response = await fetch(url, {
         method: 'GET',
         headers: {
-          'Accept': 'appication/vnd.github.v3+json',
+          'Accept': 'application/vnd.github.v3+json',
         }
         });
         if (!response.ok) {
-          throw new Error{'Error('Error fetching data: $(reponse.status) - $(response.statusText)');
+          throw new Error(`Error fetching data: ${reponse.status} - ${response.statusText}`);
                          }
 </body>
 
