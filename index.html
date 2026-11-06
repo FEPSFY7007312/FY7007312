@@ -97,7 +97,7 @@
 <!--------------------------------------------------->
 
 <body>
-  <div id="last-updated">Loading last update time....</div>
+  <div id="last-updated">Click the button to check the last update time.</div>
   <button onclick="getLastUpdatedTime()" style="display: block; margin: 10px auto; padding: 8px 16px;">
     Verify Last Modified Time
   </button>
@@ -106,19 +106,32 @@
     async function getLastUpdatedTime() {
       const username = 'FEPSFY7007312';
       const repo = 'FY7007312';
+      const output = document.getElementById('last-updated');
 
       const url = `https://api.github.com/repos/${username}/${repo}/commits`;
 
+      output.textContent = 'Loading last update time...';
+
       try {
         const response = await fetch(url, {
-        method: 'GET',
-        headers: {
-          'Accept': 'application/vnd.github.v3+json',
-        }
+          method: 'GET',
+          headers: {
+            'Accept': 'application/vnd.github.v3+json'
+          }
         });
+
         if (!response.ok) {
-          throw new Error(`Error fetching data: ${reponse.status} - ${response.statusText}`);
-                         }
+          throw new Error(`Error fetching data: ${response.status} - ${response.statusText}`);
+        }
+
+        const commits = await response.json();
+        const lastDate = new Date(commits[0].commit.committer.date);
+        output.textContent = 'Last updated: ' + lastDate.toLocaleString();
+      } catch (error) {
+        output.textContent = error.message;
+      }
+    }
+  </script>
 </body>
 
 
