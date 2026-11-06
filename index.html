@@ -62,35 +62,12 @@
       <td><a href="#Introduction">Introduction</td>
     </tr>
     <tr>
-      <td><a href="#Analysis and disucssion">Analysis and discussion</td>
+      <td><a href="#Analysis">Analysis</td>
     </tr>
     <tr>
       <td><a href="#References">References</td>
     </tr>
   </table>
-  
-    <hr><h3 id="Abstract">Abstract</h3>
-
-    <p class="ex1">
-      <pre>
-        asbtract here
-      </pre>
-</p>
-
-    <hr><h3 id="Introduction">Introduction</h3>
-
-
-  
-  <p class="ex1">
-    <pre>
-      intro here 
-    </pre>
-
-
-<hr><h3 id="Analysis and discussion">Analysis and discussion</h3>
-
-
-  <hr><h3 id="References">References</h3>
 
 <!--------------------------------------------------->
 <!-----------------LAST MODIFIED TIME---------------->
@@ -165,20 +142,56 @@
       // Calculate word count for each section and accumlate the total
       const AbstractCount = displayWordCount("Abstract_InText");
       const IntroductionCount = displayWordCount("Introduction_InText");
-      const Analysisanddiscussion Count = displayWordCount("Analysisanddiscussion_InText");
+      const AnalysisCount = displayWordCount("Analysis_InText");
 
       // Calculate the sum of all selected sections
-      const totalWordCount = AbstractCount + IntroductionCount + AnalysisanddiscussionCount;
+      const totalWordCount = AbstractCount + IntroductionCount + AnalysisCount;
 
       //Display the total word count
       document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
     }
     // Run the function for specific sections and display total count when the page loads
-    windows.onload = displayTotalWordCount;
+    window.onload = displayTotalWordCount;
     
   </script>
 
+<!--------------------------------------------------->
+<!---------------------Abstract---------------------->
+<!--------------------------------------------------->
 
+    <hr><h3 id="Abstract">Abstract</h3>
+
+    <p class="ex1">
+      <pre>
+        asbtract here
+      </pre>
+</p>
+
+  
+<!--------------------------------------------------->
+<!-------------------Introduction-------------------->
+<!--------------------------------------------------->
+  
+    <hr><h3 id="Introduction">Introduction</h3>
+    <pre id="Introduction_InText">
+      intro here 
+    </pre>
+
+<!--------------------------------------------------->
+<!---------------------Analysis---------------------->
+<!--------------------------------------------------->
+  
+<h3 id="Analysis">Analysis</h3>
+  <p id="Analysis_InText">
+    analysis goes here
+    </p>
+
+
+<!--------------------------------------------------->
+<!---------------------References-------------------->
+<!--------------------------------------------------->
+
+  <hr><h3 id="References">References</h3>
 
 
   
