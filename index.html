@@ -149,7 +149,7 @@
 
   <script>
 // function to calculate and display word count for a specified section 
-    function displayWordCount(sectionId, outputId) [
+    function displayWordCount(sectionId, outputId) {
 // get the text content from the specified section
     const text = document.getElementById(sectionId).textContent;
 // splits the text into words based on spaces and filter out empty strings
@@ -158,8 +158,25 @@
     const wordCount = wordArray.length;
 // returns the word count back to add it up
     return wordCount;
+ }
+
+// Function to calculate and display total word count from selected sections 
+    function displayTotalWordCount() {
+      // Calculate word count for each section and accumlate the total
+      const AbstractCount = displayWordCount("Abstract_InText");
+      const IntroductionCount = displayWordCount("Introduction_InText");
+      const Analysisanddiscussion Count = displayWordCount("Analysisanddiscussion_InText");
+
+      // Calculate the sum of all selected sections
+      const totalWordCount = AbstractCount + IntroductionCount + AnalysisanddiscussionCount;
+
+      //Display the total word count
+      document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
+    }
+    // Run the function for specific sections and display total count when the page loads
+    windows.onload = displayTotalWordCount;
     
-  </script></Script>
+  </script>
 
 
 
