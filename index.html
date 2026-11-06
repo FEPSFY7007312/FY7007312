@@ -1,85 +1,103 @@
 <!DOCTYPE html>
-
-<html>
-  
-  <head>
-    <img src="download.png" alt="Banner" width="1200" height="300">
-      <h1><b>ENG0018 Computer Laboratory 2026/27</b></h1>
-      <h2>Student URN: 7007312</h2>
-<hr>
-    <h2 style="font-family:calibri:"><b>Conference paper: TITLE (UNDECIDED) </b></h2>
-  </head>
-    <head>
-    <!style for tables>
-    <style>
-      table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 30%;
-
-      }
-
-      td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-      }
-
-      tr:nth0child(even) {
-        background-color: #dddddd;
-      }
-
-
-
-      
-    </style>
-
-    <style>
-  p.ex1 {
-    margin-left:250px;
-  }
- </style>
-  </head>
- 
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet"href="https://www.w3schools.com/w3css/4/w3.css">
+  <title>To what extent can soft robotic exosuits improve walking efficiency in older adults, and what limits their use outside?</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
   <style>
-    .mySlides {display:none;}
-    </style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 30%;
+    }
 
-  <body style="background-color:#FFFFFF;margin-left:50px;"></body>
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
 
-<!Table of contents>
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+
+    .ex1 {
+      margin-left: 250px;
+    }
+
+    .mySlides {
+      display: none;
+    }
+  </style>
+</head>
+
+<body style="background-color: #FFFFFF; margin-left: 50px;">
+
+  <!-- Banner and title -->
+  <img src="download.png" alt="Banner" width="1200" height="300">
+  <h1><b>ENG0018 Computer Laboratory 2026/27</b></h1>
+  <h2>Student URN: 7007312</h2>
+  <hr>
+  <h2 style="font-family: calibri;"><b>Conference paper: TITLE (UNDECIDED)</b></h2>
+
+  <!-- Table of contents -->
   <table>
-
     <tr>
-      <th><h3>table of contents</</h3></th>
+      <th><h3>Table of contents</h3></th>
     </tr>
     <tr>
-      <td><a href="#Abstract">Abstract</td>
+      <td><a href="#Abstract">Abstract</a></td>
     </tr>
     <tr>
-      <td><a href="#Introduction">Introduction</td>
+      <td><a href="#Introduction">Introduction</a></td>
     </tr>
     <tr>
-      <td><a href="#Analysis">Analysis</td>
+      <td><a href="#Analysis">Analysis</a></td>
     </tr>
     <tr>
-      <td><a href="#References">References</td>
+      <td><a href="#References">References</a></td>
     </tr>
   </table>
 
-<!--------------------------------------------------->
-<!-----------------LAST MODIFIED TIME---------------->
-<!--------------------------------------------------->
-
-<body>
+  <!-- Last modified time -->
   <div id="last-updated">Click the button to check the last update time.</div>
   <button onclick="getLastUpdatedTime()" style="display: block; margin: 10px auto; padding: 8px 16px;">
     Verify Last Modified Time
   </button>
 
+  <!-- Word count -->
+  <p id="totalWordCount"></p>
+  <hr>
+
+  <!-- Abstract -->
+  <hr>
+  <h3 id="Abstract">Abstract</h3>
+  <pre id="Abstract_InText" class="ex1">
+    abstract here
+  </pre>
+
+  <!-- Introduction -->
+  <hr>
+  <h3 id="Introduction">Introduction</h3>
+  <pre id="Introduction_InText">
+    intro here
+  </pre>
+
+  <!-- Analysis -->
+  <hr>
+  <h3 id="Analysis">Analysis</h3>
+  <p id="Analysis_InText">
+    analysis goes here
+  </p>
+
+  <!-- References -->
+  <hr>
+  <h3 id="References">References</h3>
+
   <script>
+    // Last modified time from the GitHub API
     async function getLastUpdatedTime() {
       const username = 'FEPSFY7007312';
       const repo = 'FY7007312';
@@ -108,90 +126,41 @@
         output.textContent = error.message;
       }
     }
+
+    // Counts the words in one section, given its element ID
+    function getWordCount(sectionId) {
+      const section = document.getElementById(sectionId);
+
+      if (!section) {
+        console.warn(`No element found with id "${sectionId}"`);
+        return 0;
+      }
+
+      const text = section.textContent.trim();
+
+      if (text === "") {
+        return 0;
+      }
+
+      return text.split(/\s+/).length;
+    }
+
+    // Adds up the word counts from the selected sections and displays the total
+    function displayTotalWordCount() {
+      const abstractCount = getWordCount("Abstract_InText");
+      const introductionCount = getWordCount("Introduction_InText");
+      const analysisCount = getWordCount("Analysis_InText");
+
+      const totalWordCount = abstractCount + introductionCount + analysisCount;
+
+      document.getElementById("totalWordCount").textContent = `Total word count: ${totalWordCount}`;
+    }
+
+    // Run once the page has fully loaded
+    window.onload = displayTotalWordCount;
   </script>
 </body>
-
-
-
-  
-
-<!--------------------------------------------------->
-<!----------------WORD COUNT FUNCTION---------------->
-<!--------------------------------------------------->
-  
-<script>
-  // Counts the words in one section, given its element ID
-  function getWordCount(sectionId) {
-    const section = document.getElementById(sectionId);
-
-    if (!section) {
-      console.warn(`No element found with id "${sectionId}"`);
-      return 0;
-    }
-
-    const text = section.textContent.trim();
-
-    if (text === "") {
-      return 0;
-    }
-
-    // Split on any run of whitespace and count the pieces
-    return text.split(/\s+/).length;
-  }
-
-  // Adds up the word counts from the selected sections and displays the total
-  function displayTotalWordCount() {
-    const abstractCount = getWordCount("Abstract_InText");
-    const introductionCount = getWordCount("Introduction_InText");
-    const analysisCount = getWordCount("Analysis_InText");
-
-    const totalWordCount = abstractCount + introductionCount + analysisCount;
-
-    document.getElementById("totalWordCount").textContent = `Total word count: ${totalWordCount}`;
-  }
-
-  // Run once the page has fully loaded
-  window.onload = displayTotalWordCount;
-</script>
-
-<!--------------------------------------------------->
-<!---------------------Abstract---------------------->
-<!--------------------------------------------------->
-
-    <hr><h3 id="Abstract">Abstract</h3>
-
-    <p class="ex1">
-      <pre>
-        asbtract here
-      </pre>
-</p>
-
-  
-<!--------------------------------------------------->
-<!-------------------Introduction-------------------->
-<!--------------------------------------------------->
-  
-    <hr><h3 id="Introduction">Introduction</h3>
-    <pre id="Introduction_InText">
-      intro here 
-    </pre>
-
-<!--------------------------------------------------->
-<!---------------------Analysis---------------------->
-<!--------------------------------------------------->
-  
-<h3 id="Analysis">Analysis</h3>
-  <p id="Analysis_InText">
-    analysis goes here
-    </p>
-
-
-<!--------------------------------------------------->
-<!---------------------References-------------------->
-<!--------------------------------------------------->
-
-  <hr><h3 id="References">References</h3>
-
+</html>
 
   
 
